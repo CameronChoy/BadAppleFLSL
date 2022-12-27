@@ -162,7 +162,7 @@ int main(int argc, char* argv[]) {
     for (int f = startf; f <= endf; ++f) {
 
         snprintf(read_filename_buffer, 128, "res/BadApple/%i.png", f);
-        if (!read_png(filename_buffer) || height == 0 || width == 0) {
+        if (!read_png(read_filename_buffer) || height == 0 || width == 0) {
             printf("Bad File\n");
             return 0;
         }
