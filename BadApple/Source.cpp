@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
 
         snprintf(read_filename_buffer, 128, "res/BadApple/%i.png", f);
         if (!read_png(read_filename_buffer) || height == 0 || width == 0) {
-            printf("Bad File %s\n", read_filename_buffer);
+            printf("Bad File\n");
             return 0;
         }
 
