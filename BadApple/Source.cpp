@@ -155,11 +155,10 @@ int main(int argc, char* argv[]) {
 
         first = false;
 
-        int x0 = 0, y0 = 0;
-        int x1 = 0, y1 = 0, xe = 0, ye = 0;
-        
+        int x1 = 0, y1 = 0, xe = 0, ye = 0, x0 = 0, y0 = 0;;
         float temp = 0, b = FLT_MAX;
         point p;
+
         for (int l = 0; l < LINE_COUNT; ++l) {
 
             
