@@ -60,11 +60,8 @@ float calculate_line_value(png_byte** row_ptr, png_byte** buffer, int width, int
     
     long value = 0;
     int pixel_count = 4;
-    //printf("points: (%i,%i) (%i,%i) %ix%i\n", x0, y0, x1, y1, width, height);
 
     find_edges(x0, y0, x1, y1, width, height);
-
-    //printf("Edge points: (%i,%i) (%i,%i)\n", x0,y0,x1,y1);
     
     bool steep = is_steep(x0, y0, x1, y1);
 
@@ -130,13 +127,10 @@ float calculate_line_value(png_byte** row_ptr, png_byte** buffer, int width, int
         }
     }
     
-    //printf("line value: %i / %i = %f\n", value, pixel_count, (float)value / pixel_count);
     return (((float)value / pixel_count));
 }
 
-/*
-* in_draws a full line with Xiaolin Wu line algorithm
-*/
+
 void draw_line(png_byte** row_ptr, png_byte** buffer, int width, int height, int x0, int y0, int x1, int y1) {
 
     find_edges(x0, y0, x1, y1, width, height);
@@ -151,7 +145,6 @@ void draw_line(png_byte** row_ptr, png_byte** buffer, int width, int height, int
     unsigned int r = 0;
 
     unsigned char col_cap = 255 - in_color;
-    //printf("Draw edge points: (%i,%i) (%i,%i) %f %x\n", x0, y0, x1, y1, brightness, color);
 
     // First endpoint
     int xe = round(x0);
@@ -280,19 +273,14 @@ void draw_line(png_byte** row_ptr, png_byte** buffer, int width, int height, int
                 else buffer[ipart(intery) + 1][x * out_dr] = 0;
 
                 if (row_ptr[ipart(intery) + 1][x * in_dr] < col_cap) {
-                   // r += in_color;
                     row_ptr[ipart(intery) + 1][x * in_dr] += in_color;
                 }
             } 
             
-            //printf("%X=%X ", row_ptr[ipart(intery)][x * out_dr],r);
             if (row_ptr[ipart(intery)][x * in_dr] <= col_cap) {
-                //printf("+ %X = %X ", in_color, r + in_color);
-                //r += in_color;
                 row_ptr[ipart(intery)][x * in_dr] += in_color;
             }
            
-            //printf("-> %X\n", row_ptr[ipart(intery)][x * in_dr]);
             intery += gradient;
         }
     }
