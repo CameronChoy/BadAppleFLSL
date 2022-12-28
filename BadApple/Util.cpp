@@ -77,13 +77,13 @@ float calculate_line_value(png_byte** row_ptr, png_byte** buffer, int width, int
     int ypxl1 = ipart(ye);
     
     if (steep) {
-        value += row_ptr[xpxl1][(int)(ypxl1 * in_dr)];
-        value += row_ptr[xpxl1 + 1][(int)(ypxl1 * in_dr)];
+        value += row_ptr[xpxl1][ypxl1 * in_dr];
+        value += row_ptr[xpxl1 + 1][ypxl1 * in_dr];
         pixel_count += 2;
     }
     else {
-        value += row_ptr[ypxl1][(int)(xpxl1 * in_dr)];
-        value += row_ptr[ypxl1][(int)((xpxl1 + 1) * in_dr)];
+        value += row_ptr[ypxl1][xpxl1 * in_dr];
+        value += row_ptr[ypxl1][(xpxl1 + 1) * in_dr)];
     }
 
     float intery = ye + gradient;
@@ -96,30 +96,30 @@ float calculate_line_value(png_byte** row_ptr, png_byte** buffer, int width, int
     int ypxl2 = ipart(ye);
 
     if (steep) {
-        value += row_ptr[xpxl1][(int)(ypxl1 * in_dr)];
-        value += row_ptr[xpxl1 + 1][(int)(ypxl1 * in_dr)];
+        value += row_ptr[xpxl1][ypxl1 * in_dr];
+        value += row_ptr[xpxl1 + 1][ypxl1 * in_dr];
     }
     else {
-        value += row_ptr[ypxl2][(int)(xpxl2 * in_dr)];
-        value += row_ptr[ypxl2][(int)((xpxl2 + 1) * in_dr)];
+        value += row_ptr[ypxl2][xpxl2 * in_dr];
+        value += row_ptr[ypxl2][(xpxl2 + 1) * in_dr];
     }
 
     // Main loop
     if (steep) {
         for (int x = xpxl1 + 1; x < xpxl2 - 1; ++x) {
-            value += row_ptr[x][(int)(ipart(intery) * in_dr)];
-            value += row_ptr[x + 1][(int)(ipart(intery) * in_dr)];
+            value += row_ptr[x][ipart(intery) * in_dr];
+            value += row_ptr[x + 1][ipart(intery) * in_dr];
             pixel_count += 2;
             intery += gradient;
         }
     }
     else {
         for (int x = xpxl1 + 1; x < xpxl2 - 1; ++x) {
-            value += row_ptr[ipart(intery)][(int)(x * in_dr)];
+            value += row_ptr[ipart(intery)][x * in_dr];
             if (intery < height)
             {
                 pixel_count += 2;
-                value += row_ptr[ipart(intery) + 1][(int)(x * in_dr)]; 
+                value += row_ptr[ipart(intery) + 1][x * in_dr]; 
             }
             
                 

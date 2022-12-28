@@ -206,16 +206,3 @@ int main(int argc, char* argv[]) {
     
 	return 0;
 }
-
-
-
-//for (int y = 0; y < height; y++) {
-//    png_bytep row = row_pointers[y];
-//
-//    for (int x = 0; x < width; x++) {
-//        png_bytep px = &(row[x * 4]);
-//
-//        for (int i = 0; i < 3; ++i)
-//            px[i] *= 0.5;//+= wanted_color[i];
-//    }
-//}
