@@ -83,7 +83,7 @@ float calculate_line_value(png_byte** row_ptr, png_byte** buffer, int width, int
     }
     else {
         value += row_ptr[ypxl1][xpxl1 * in_dr];
-        value += row_ptr[ypxl1][(xpxl1 + 1) * in_dr)];
+        value += row_ptr[ypxl1][(xpxl1 + 1) * in_dr];
     }
 
     float intery = ye + gradient;
