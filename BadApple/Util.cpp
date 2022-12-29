@@ -79,7 +79,6 @@ float calculate_line_value(png_byte** row_ptr, png_byte** buffer, int width, int
     if (steep) {
         value += row_ptr[xpxl1][ypxl1 * in_dr];
         value += row_ptr[xpxl1 + 1][ypxl1 * in_dr];
-        pixel_count += 2;
     }
     else {
         value += row_ptr[ypxl1][xpxl1 * in_dr];
